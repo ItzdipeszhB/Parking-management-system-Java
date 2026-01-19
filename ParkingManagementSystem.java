@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class ParkingManagementSystem {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/parking_system";
-    private static final String DB_USER = "root"; // Replace with your MySQL username
-    private static final String DB_PASSWORD = "root"; // Replace with your MySQL password
+    private static final String DB_USER = "root"; 
+    private static final String DB_PASSWORD = "root"; 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class ParkingManagementSystem {
                 System.out.print("Choose an option: ");
 
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine(); 
 
                 switch (choice) {
                     case 1 -> parkVehicle(connection, scanner);
@@ -72,7 +72,7 @@ public class ParkingManagementSystem {
                 Timestamp entryTime = resultSet.getTimestamp("entry_time");
                 Timestamp exitTime = new Timestamp(System.currentTimeMillis());
 
-                long duration = (exitTime.getTime() - entryTime.getTime()) / (1000 * 60); // Duration in minutes
+                long duration = (exitTime.getTime() - entryTime.getTime()) / (1000 * 60); 
                 double fee = calculateFee(duration, category);
 
                 String updateSql = "UPDATE parking_records SET exit_time = ?, parking_fee = ? WHERE id = ?";
@@ -114,10 +114,8 @@ public class ParkingManagementSystem {
             case "bike" -> 25.0;
             case "bus" -> 100.0;
             default -> 25.0;
-        }; // Increased by 50
-        // Increased by 25
-        // Increased by 100
-        // Default rate
+        }; 
         return (duration / 60.0) * ratePerHour;
     }
 }
+
